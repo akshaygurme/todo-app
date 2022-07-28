@@ -1,0 +1,5 @@
+pick data from textbox.         (done)
+how to send and store data in json using express
+
+reading the data from JSOn file (done)
+writing data to JSON file       (done)

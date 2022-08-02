@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <title>To-do App</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
     <style></style>
   </head>
   <body>
@@ -16,5 +18,38 @@
       <input type="submit" id="addTask" value="AddTask" />
       <!-- <button type="button" onclick="addTask()">Add Task</button> -->
     </form>
+
+    <table id='table'>
+        <!-- HEADING FORMATION -->
+        <tr>
+            <th>Tasks</th>
+
+        </tr>
+
+        <script>
+            $(document).ready(function () {
+
+                // FETCHING DATA FROM JSON FILE
+                $.getJSON("./public/task.json", 
+                        function (data) {
+                    var student = '';
+
+                    // ITERATING THROUGH OBJECTS
+                    $.each(data, function (key, value) {
+
+                        //CONSTRUCTION OF ROWS HAVING
+                        // DATA FROM JSON OBJECT
+                        student += '<tr>';
+                        student += '<td>' + 
+                        value + '</td>';
+
+                        student += '</tr>';
+                    });
+                      
+                    //INSERTING ROWS INTO TABLE 
+                    $('#table').append(student);
+                });
+            });
+        </script>
   </body>
 </html>

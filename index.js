@@ -7,7 +7,8 @@ const path = require("path");
 const app = express();
 const port = 3000;
 
-app.use(express.static("public"));
+// app.use(express.static("todo-app"));
+app.use(express.static(__dirname + "/"));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
@@ -16,7 +17,6 @@ app.get("/", (req, res) => {
 // To add new task
 app.post("/addTask", urlencodedParser, (req, res) => {
   console.log(req.body.Task);
-
   var task = req.body.Task;
 
   // reading JSON file
@@ -28,12 +28,13 @@ app.post("/addTask", urlencodedParser, (req, res) => {
     }
     try {
       const customer = JSON.parse(jsonString);
-
-      console.log("Tasks are :", customer.Tasks); // => "Customer address is: Infinity Loop Drive"
+      //   console.log("Tasks are :", customer.Tasks); // => "Customer address is: Infinity Loop Drive"
       customer.Tasks.push(task);
-      console.log("After update Tasks are :", customer.Tasks);
+      //   console.log("After update Tasks are :", customer.Tasks);
       fs.writeFile("./public/task.json", JSON.stringify(customer), () => {});
-      res.send(`${customer.Tasks}`);
+      //   res.send(`${customer.Tasks}`);
+      res.redirect("/");
+      //   window.location.href = "http://localhost/";
     } catch (err) {
       console.log("Error parsing JSON string:", err);
     }

@@ -1,5 +1,10 @@
 pick data from textbox.         (done)
 how to send and store data in json using express
-
 reading the data from JSOn file (done)
 writing data to JSON file       (done)
+redirect to home screen once data in saved in JSON file (done)
+
+
+render JSON file data in home screen
+1. read json in / path
+2. render the task content
